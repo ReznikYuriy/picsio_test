@@ -1,43 +1,32 @@
+import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-//import axios from 'axios';
 
 @Injectable()
 export class TransportService {
+  constructor(private readonly httpService: HttpService) {}
+
   async sendPayload(
     transport: string,
     url: string,
     payload: Record<string, any>,
   ): Promise<void> {
-    console.log({ transport });
     switch (transport) {
       case 'http.post':
         {
-          //await axios.post(url, payload);
+          await this.httpService.post(url, payload);
           console.log('http.post', url);
         }
         break;
       case 'http.get':
         {
-          //await axios.get(url, payload);
+          await this.httpService.get(url);
           console.log('http.get', url);
         }
         break;
       case 'http.put':
         {
-          //await axios.put(url, payload);
+          this.httpService.put(url, payload);
           console.log('http.put', url);
-        }
-        break;
-      case 'http.put':
-        {
-          //await axios.put(url, payload);
-          console.log('http.put');
-        }
-        break;
-      case 'http.put':
-        {
-          //await axios.put(url, payload);
-          console.log('http.put');
         }
         break;
       case 'console.log':

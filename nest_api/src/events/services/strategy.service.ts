@@ -28,6 +28,9 @@ export class StrategyService {
         }
         return false;
       }
+      case '() => { return true; }': {
+        return true;
+      }
       default:
         return false;
     }

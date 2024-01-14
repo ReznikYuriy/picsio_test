@@ -1,20 +1,21 @@
 export const DESTINATIONS = [
   {
     name: 'destination1',
+    url: 'http://example.com/endpoint',
     transport: 'http.post',
-    url: 'https://example.com/destination1',
   },
   {
     name: 'destination2',
-    transport: 'http.post',
-    url: 'https://example2.com/destination2',
+    url: 'http://example2.com/endpoint',
+    transport: 'http.put',
   },
   {
     name: 'destination3',
-    transport: 'console.log',
+    url: 'http://example3.com/endpoint',
+    transport: 'http.get',
   },
   {
     name: 'destination4',
-    transport: 'console.warn',
+    transport: 'console.log',
   },
 ];
