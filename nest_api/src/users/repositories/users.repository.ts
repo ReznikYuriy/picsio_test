@@ -21,6 +21,10 @@ export class UsersRepository {
     return this.userModel.findById(id).exec();
   }
 
+  async findOneByEmail(email: string): Promise<User | null> {
+    return this.userModel.findOne({ email: email }).exec();
+  }
+
   async remove(id: string): Promise<User | null> {
     return this.userModel.findByIdAndDelete(id).exec();
   }

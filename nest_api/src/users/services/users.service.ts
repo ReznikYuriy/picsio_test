@@ -37,6 +37,10 @@ export class UsersService implements OnModuleInit {
     return this.userRepo.findOne(id);
   }
 
+  async findOneByEmail(email: string): Promise<User | null> {
+    return this.userRepo.findOneByEmail(email);
+  }
+
   async remove(id: string): Promise<User | null> {
     return this.userRepo.remove(id);
   }
