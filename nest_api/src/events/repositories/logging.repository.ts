@@ -15,4 +15,8 @@ export class LoggingRepository {
     };
     await this.logEntryModel.create(logEntry);
   }
+
+  async getAllLogs(): Promise<LogEntry[]> {
+    return this.logEntryModel.find({});
+  }
 }

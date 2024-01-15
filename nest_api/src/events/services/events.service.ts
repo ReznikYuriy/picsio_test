@@ -57,4 +57,8 @@ export class EventsService {
       throw error;
     }
   }
+
+  async getAllLogs() {
+    return this.loggingService.getAllLogs();
+  }
 }
