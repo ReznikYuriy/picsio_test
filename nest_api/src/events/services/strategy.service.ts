@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import * as vm from 'vm';
 
 @Injectable()
 export class StrategyService {
@@ -28,11 +29,20 @@ export class StrategyService {
         }
         return false;
       }
-      case '() => { return true; }': {
+      /* case '() => { return true; }': {
         return true;
-      }
+      } */
       default:
-        return false;
+        let customStrategyFunc;
+
+        try {
+          customStrategyFunc = vm.runInThisContext(strategy);
+          const res = customStrategyFunc(possibleDestinations);
+          return res;
+        } catch (error) {
+          console.error('Error executing custom strategy:', error.message);
+          return false;
+        }
     }
   }
 }
